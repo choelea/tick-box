@@ -1,9 +1,25 @@
 完全参考https://github.com/influxdata/sandbox；使用快捷方式协同运行实现容器监控。
+clone后运行 `./tickbox up` 通过http://ip:8888 访问Chronograf进行配置。 其他宿主机的容器的监控，可以拉取同样版本的telegraf镜像运行，复制telegraf-other目录，（注意需要修改HOSTNAME和influxdb部分信息）。
+
+```
+// 复制telegraf-other 到/home/  并已经对相关配置做了对应的修改
+docker run -d \
+--name telegraf \
+-v /home/telegraf-other/:/etc/telegraf/  \
+-v /var/run/docker.sock:/var/run/docker.sock  \
+docker.io/telegraf:1.11.5
+```
 # InfluxData tickbox
 
-This repo is a quick way to get the entire TICK Stack spun up and working together. It uses [Docker](https://www.docker.com/) to spin up the full TICK stack in a connected fashion. This is heavily tested on MacOS and should mostly work on Linux and Windows.
+This repo is a quick way to get the entire TICK Stack spun up and working together. It uses [Docker](https://www.docker.com/) to spin up the full TICK stack in a connected fashion. 
 
-To get started you need a running docker installation. If you don't have one, you can download Docker for [Mac](https://www.docker.com/docker-mac) or [Windows](https://www.docker.com/docker-windows), or follow the installation instructions for Docker CE for your [Linux distribution](https://docs.docker.com/engine/installation/#server).
+ - Telegraf：采用插件机制实现的数据采集服务，可以采集包含Docker容器在内的多种性能数据
+
+ - InfluxDB：专门负责存储时序数据
+
+ - Chronograf：基于React.js编写的性能数据可视化服务
+
+ - Kapacitor：提供告警触发和处理功能
 
 ## 安装docker和docker-compose
 
