@@ -68,17 +68,7 @@ tickbox () {
       echo "Spinning up Docker Images..."
       echo "If this is your first time starting tickbox this might take a minute..."
       docker-compose up -d --build
-      echo "Opening tabs in browser..."
-      sleep 3
-      if [ $(uname) == "Darwin" ]; then
-        open http://localhost:3010
-        open http://localhost:8888
-      elif [ $(uname) == "Linux" ]; then
-        xdg-open http://localhost:8888
-        xdg-open http://localhost:3010
-      else
-        echo "no browser detected..."
-      fi
+      echo "Acccess on browser: http://ip:8888"
       ;;
     down)
       echo "Stopping tickbox containers..."

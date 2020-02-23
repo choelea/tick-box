@@ -1,8 +1,18 @@
+完全参考https://github.com/influxdata/sandbox；使用快捷方式协同运行实现容器监控。
 # InfluxData tickbox
 
 This repo is a quick way to get the entire TICK Stack spun up and working together. It uses [Docker](https://www.docker.com/) to spin up the full TICK stack in a connected fashion. This is heavily tested on MacOS and should mostly work on Linux and Windows.
 
 To get started you need a running docker installation. If you don't have one, you can download Docker for [Mac](https://www.docker.com/docker-mac) or [Windows](https://www.docker.com/docker-windows), or follow the installation instructions for Docker CE for your [Linux distribution](https://docs.docker.com/engine/installation/#server).
+
+## 安装docker和docker-compose
+
+以阿里云ECS centos7.7示例：
+```
+yum -y update
+yum install docker
+yum install docker-compose
+```
 
 ### Running
 
@@ -11,7 +21,7 @@ To run the `tickbox`, simply use the convenient cli:
 ```bash
 $ ./tickbox
 tickbox commands:
-  up           -> spin up the tickbox environment (add -nightly to grab the latest nightly builds of InfluxDB and Chronograf)
+  up           -> spin up the tickbox environment 
   down         -> tear down the tickbox environment
   restart      -> restart the tickbox
   influxdb     -> attach to the influx cli
@@ -28,6 +38,7 @@ tickbox commands:
 To get started just run `./tickbox up`. You browser will open two tabs:
 
 - `localhost:8888` - Chronograf's address. You will use this as a management UI for the full stack
+- `localhost:3010` - Documentation server. This contains a simple markdown server for tutorials and documentation.
 
 
 > NOTE: Make sure to stop any existing installations of `influxdb`, `kapacitor` or `chronograf`. If you have them running the tickbox will run into port conflicts and fail to properly start. In this case stop the existing processes and run `./tickbox restart`. Also make sure you are **not** using _Docker Toolbox_.
@@ -48,5 +59,5 @@ If you are using the nightly builds and want to get started with Flux, make sure
 
 > Note: see [influx-stress](https://github.com/influxdata/influx-stress) to create data for your tickbox.
 
-![Dashboard](./documentation/static/images/tickbox-dashboard.png)
+![Dashboard](./documentation/static/images/sandbox-dashboard.png)
 

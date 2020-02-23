@@ -33,7 +33,7 @@ services:
 
   kapacitor:
   # Full tag list: https://hub.docker.com/r/library/kapacitor/tags/
-    image: docker.io/kapacitor:1.5
+    image: docker.io/kapacitor:1.5.1
     volumes:
       # Mount for kapacitor data directory
       - ./kapacitor/data/:/var/lib/kapacitor
@@ -65,3 +65,8 @@ services:
       - kapacitor
       - influxdb
       - telegraf
+    documentation:
+      build:
+        context: ./documentation
+      ports:
+        - "3010:3000"
