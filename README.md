@@ -7,7 +7,7 @@ docker run -d \
 --name telegraf \
 -v /home/telegraf-other/:/etc/telegraf/  \
 -v /var/run/docker.sock:/var/run/docker.sock  \
-docker.io/telegraf:1.11.5
+docker.io/telegraf:1.13.2
 ```
 # InfluxData tickbox
 
