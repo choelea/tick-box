@@ -1,3 +1,5 @@
+国内访问github太慢，已经迁移至： https://gitee.com/choelea/tick-box
+
 完全参考https://github.com/influxdata/sandbox；使用快捷方式协同运行实现容器监控。
 clone后运行 `./tickbox up` 通过http://ip:8888 访问Chronograf进行配置。 其他宿主机的容器的监控，可以拉取同样版本的telegraf镜像运行，复制telegraf-other目录，（注意需要修改HOSTNAME和influxdb部分信息）。
 
